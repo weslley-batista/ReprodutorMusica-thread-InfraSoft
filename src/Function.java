@@ -2,10 +2,11 @@ import java.util.*;
 
 public class Function {
 	Scanner scan = new Scanner(System.in);
-	Vector <String> lista = new Vector<String>(); int a=1;//parametro de sossego do codigo
+	Vector <String> lista = new Vector<String>(); 
+	int a=1;//parametro de sossego do codigo
 	String mensagem;
 	
-	public String addmusic () {
+	public String addmusic() {
 		System.out.println("Digite o nome da musica que deseja adcionar");
 		String musica = scan.nextLine();
 		if(lista.contains(musica)) {
@@ -18,7 +19,7 @@ public class Function {
 		return mensagem;
 	}
 	
-	public String RemoveMusic () {
+	public String RemoveMusic() {
 		System.out.println("Digite o nome da musica que deseja remover");
 		String musica = scan.nextLine();
 		if(lista.isEmpty() || lista.contains(musica)) {
@@ -30,6 +31,5 @@ public class Function {
 			mensagem ="Musica removida com sucesso";
 		}
 		return mensagem;
-		
 	}
 }

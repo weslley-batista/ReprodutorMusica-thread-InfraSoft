@@ -17,11 +17,13 @@ public class Comandos {
 
 			switch (acao) {
 			case 1:
-				funcao.addmusic();
+				AddMusic threadAdd = new AddMusic("asd");
+				threadAdd.start();
 				break;
 
 			case 2:
-				funcao.RemoveMusic();
+				RemoveMusic threadRemove = new RemoveMusic("sels");
+				threadRemove.start();
 				break;
 			}
 		}
