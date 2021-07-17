@@ -1,22 +1,20 @@
 import java.util.ArrayList;
 
 public class RemoveMusic extends Thread {
+	String musica;
+	ArrayList <String> listaDeReproducao;
 	
-	ArrayList <String> lista = new ArrayList<String>();
-	private String musica;
-		
-	public RemoveMusic(String musica) {
+	public RemoveMusic(String musica,  ArrayList <String> listaDeReproducao) {
 		this.musica = musica;
+		this.listaDeReproducao = listaDeReproducao;
 	}
-		
+
 	public void run() {
-		
-		if(lista.isEmpty() || !lista.contains(this.musica)) {
-			
-			System.out.println("Musica não encontrada para remoção");;
+		if(listaDeReproducao.isEmpty() || !listaDeReproducao.contains(this.musica)) {
+			System.out.println("Musica não encontrada para remoção");
 		}
-		else{
-			lista.remove(this.musica);
+		else {
+			listaDeReproducao.remove(this.musica);
 			System.out.println("Musica removida com sucesso");
 		}
 	}

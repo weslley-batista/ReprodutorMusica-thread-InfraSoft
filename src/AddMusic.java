@@ -1,22 +1,21 @@
 import java.util.ArrayList;
 
 public class AddMusic extends Thread {
-	ArrayList <String> lista = new ArrayList<String>();
-	private String musica;
+	String musica;
+	ArrayList <String> listaDeReproducao;
 	
-	
-	public AddMusic(String musica) {
+	public AddMusic(String musica, ArrayList <String> listaDeReproducao) {
 		this.musica = musica;
+		this.listaDeReproducao = listaDeReproducao;
 	}
-	
 	
 	public void run() {
 		
-		if(lista.contains(this.musica)) {
+		if(listaDeReproducao.contains(this.musica)) {
 			System.out.println("A musica já está na lista");
 		}
-		else{
-			lista.add(this.musica);
+		else {
+			listaDeReproducao.add(this.musica);
 			System.out.println("Musica adcionada com sucesso");
 		}
 	}

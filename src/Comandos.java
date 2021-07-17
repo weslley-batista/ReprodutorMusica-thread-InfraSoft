@@ -1,33 +1,43 @@
 import java.util.*;
 import java.io.*;
-//java.util.concurrent; biblioteca para thread
+
 public class Comandos {
-	// codico de leitura
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws InterruptedException {
 		Scanner scan = new Scanner(System.in);
-		Function funcao = new Function(); // Classe de funções
-
-		System.out.println("O que deseja fazer?");
-		System.out.println("1 - Adicionar Musica");
-		System.out.println("2 - Remover Musica");
-		System.out.println("teste git");
-
-		while (scan.hasNext()) { // Sempre ler entrada
+		ArrayList <String> listaDeReproducao = new ArrayList<String>(); // Um array de musicas
+		InterfaceTexto interfaceTexto = new InterfaceTexto();	//menu
+		Musica askMusic = new Musica();
+		
+		boolean parar = false;
+		while(!parar) {
+			interfaceTexto.opcoesMenu();
 			int acao = scan.nextInt();
-
+			
+			String musica;
+			if(acao==1 || acao==2){
+				System.out.println("Digite o nome da musica");
+				String lixo = scan.nextLine();	//ler o resto da linha do nome da musica
+				musica = scan.nextLine();
+				askMusic.setMusica(musica);
+			}
+			
 			switch (acao) {
-			case 1:
-				AddMusic threadAdd = new AddMusic("asd");
-				threadAdd.start();
-				break;
-
-			case 2:
-				RemoveMusic threadRemove = new RemoveMusic("sels");
-				threadRemove.start();
-				break;
+				case 1:
+					AddMusic threadAdd = new AddMusic(askMusic.getMusica(), listaDeReproducao);
+					threadAdd.start();	//programa sequencia
+					threadAdd.join();
+					break;
+				case 2:
+					RemoveMusic threadRemove = new RemoveMusic (askMusic.getMusica(), listaDeReproducao);
+					threadRemove.start();
+					break;
+			}
+			
+			for(String printMusic : listaDeReproducao) {//imprimir todas as musicas
+				System.out.println(printMusic);
 			}
 		}
-
+		
 	}
-
 }
